@@ -1,9 +1,56 @@
 \documentclass{article}
 \usepackage{wallpaper}
 \usepackage{blindtext}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{parskip}
+\usepackage{verbatim}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+
+\setcounter{secnumdepth}{-1}
+\renewcommand{\headrule}{\includegraphics[width=180mm]{dirtyheader.png}}
+
+\makeatletter
+\renewcommand\@maketitle{\centering\Huge\@title\\} % Casually redefining how the title works.
+\makeatother
+
 \begin{document}
+\title{Codex Template}
+\maketitle
+\thispagestyle{fancy} % Needed to make sure we get the nice header even on the ``titlepage''
+
+\begin{multicols}{3}
 \LRCornerWallPaper{1}{background.png}
+
+\section{Caveats}
+\label{sec:caveats}
+
+This template was made based on a quick look at an Ork codex.
+
+Other caveats of this template include:
+\begin{itemize}
+\item No figure environment. There are workarounds, but floats \emph{will not work} in multicol environment. Passing \verb=twocolumn= option to \verb=article= class allows floats, but then you only have two columns.
+\item Footnotes are like this\footnote{See? This footnote will span across the whole page if it gets the chance!}. If you want footnotes that only span the bottom of columns, there are solutions online. Also, footnotes may not appear on the same page as they were referenced. Again, solved by \verb=twocolumn= option used instead.
+\item If you want more control of things (e.g.\ having a picture span across only two columns), I recommend the \verb=flowfram= package. It is more complicated that \verb=multicol=, but gives enough control over layout that you could make a professional magazine if you wanted to.
+\end{itemize}
+
+Although there are no figures, you can still do this
+\begin{minipage}[c]{1.0\linewidth}
+  \vspace{1em}
+  \centering
+  \fbox{\includegraphics[width=0.7\linewidth]{ork.png}}\\
+  \it That is one mean looking ork.
+  \vspace{1em}
+\end{minipage}
+
+Fancy headings ala 40k codex's should be possible through XeTeX, and redefining the section commands. The rest of this document is Lorem Ipsum to show how how good it is.
 \blinddocument
+
+\end{multicols}
 \end{document}
 
 %%% Local Variables: 
