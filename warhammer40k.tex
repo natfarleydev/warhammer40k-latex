@@ -1,21 +1,25 @@
 \documentclass{article}
-\usepackage{wallpaper}
-\usepackage{blindtext}
-\usepackage[margin=2cm]{geometry}
-\usepackage{fancyhdr}
+\usepackage{wallpaper} %Used for the wallpaper
+\usepackage{blindtext} % Used for Lorem Ipsum
+\usepackage[margin=2cm]{geometry} % Easy way to define margins
+\usepackage{fancyhdr} % Fancy header and footer
 \pagestyle{fancy}
-\usepackage{parskip}
-\usepackage{verbatim}
-\usepackage[scaled]{helvet}
+\usepackage{parskip} % Package to separate paragraphs with a line instead of indentation
+\usepackage[scaled]{helvet} % Next three lines choose Helvetica as the font.
 \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
 \usepackage[T1]{fontenc}
-\usepackage{multicol}
+\usepackage{multicol} % Needed for three columns (explanation in text).
+\usepackage[uppercase]{titlesec} % Used for easy manipulation of section headings.
 
-\setcounter{secnumdepth}{-1}
-\renewcommand{\headrule}{\includegraphics[width=180mm]{dirtyheader.png}}
+\titlespacing\section{0pt}{0ex}{-\parskip} % Removing spacing between section headings and their paragraphs
+\titlespacing\subsection{0pt}{0ex}{-\parskip}
+\titlespacing\subsubsection{0pt}{0ex}{-\parskip}
 
-\makeatletter
-\renewcommand\@maketitle{\centering\Huge\@title\\} % Casually redefining how the title works.
+\setcounter{secnumdepth}{-1} % Get rid of all numbering, but let everything turn up in the table of contents
+\renewcommand{\headrule}{\includegraphics[width=180mm]{dirtyheader.png}} % Fancy ork header.
+
+\makeatletter % Anything between this and \makeatother would usually live in a class i.e. commands meant for only a cls file.
+\renewcommand\@maketitle{\centering\Huge\@title\\} % Casually redefining how the title works. NB, this will make twocolumn titles only live in one column.
 \makeatother
 
 \begin{document}
@@ -26,26 +30,24 @@
 \begin{multicols}{3}
 \LRCornerWallPaper{1}{background.png}
 
-\section{Caveats}
-\label{sec:caveats}
-
+\section{Caveats}\label{sec:caveats}%
 This template was made based on a quick look at an Ork codex.
 
 Other caveats of this template include:
 \begin{itemize}
-\item No figure environment. There are workarounds, but floats \emph{will not work} in multicol environment. Passing \verb=twocolumn= option to \verb=article= class allows floats, but then you only have two columns.
+\item No figure environment. There are workarounds, but floats \emph{will not work} in multicol environment. Passing \verb=twocolumn= option to \verb=article= class allows floats (along with the normal \verb=figure*= to span across columns), but then you only have two columns.
 \item Footnotes are like this\footnote{See? This footnote will span across the whole page if it gets the chance!}. If you want footnotes that only span the bottom of columns, there are solutions online. Also, footnotes may not appear on the same page as they were referenced. Again, solved by \verb=twocolumn= option used instead.
 \item If you want more control of things (e.g.\ having a picture span across only two columns), I recommend the \verb=flowfram= package. It is more complicated that \verb=multicol=, but gives enough control over layout that you could make a professional magazine if you wanted to.
 \end{itemize}
 
 Although there are no figures, you can still do this
-\begin{minipage}[c]{1.0\linewidth}
+\fbox{\begin{minipage}[c]{1.0\linewidth}
   \vspace{1em}
   \centering
-  \fbox{\includegraphics[width=0.7\linewidth]{ork.png}}\\
+  \includegraphics[width=0.7\linewidth]{ork.png}\\
   \it That is one mean looking ork.
   \vspace{1em}
-\end{minipage}
+\end{minipage}}
 
 Fancy headings ala 40k codex's should be possible through XeTeX, and redefining the section commands. The rest of this document is Lorem Ipsum to show how how good it is.
 \blinddocument
