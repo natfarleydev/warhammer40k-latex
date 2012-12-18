@@ -16,7 +16,11 @@
 \titlespacing\subsubsection{0pt}{0ex}{-\parskip}
 
 \setcounter{secnumdepth}{-1} % Get rid of all numbering, but let everything turn up in the table of contents
+
 \renewcommand{\headrule}{\includegraphics[width=180mm]{dirtyheader.png}} % Fancy ork header.
+
+\fancyfoot{} % clearing the footer
+\fancyfoot[LE,RO]{\fbox{\parbox[c]{1.8em}{\centering\vspace{0.5em}\thepage\vspace{0.5em}}}} % put a box around the page number, putting it in the footer. For two-sided documents, it places it (L)eft on (E)ven pages, (R)ight on (O)dd.
 
 \makeatletter % Anything between this and \makeatother would usually live in a class i.e. commands meant for only a cls file.
 \renewcommand\@maketitle{\centering\Huge\@title\\} % Casually redefining how the title works. NB, this will make twocolumn titles only live in one column.
